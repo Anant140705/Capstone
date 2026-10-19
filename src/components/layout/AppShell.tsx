@@ -14,7 +14,6 @@ import {
   Bell,
   Moon,
   Sun,
-  Plane,
 } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
@@ -40,9 +39,11 @@ const nav = [
 export function Logo({ compact = false }: { compact?: boolean }) {
   return (
     <Link to="/" className="flex min-w-0 items-center gap-2.5">
-      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-primary text-primary-foreground shadow-soft">
-        <Plane className="h-4.5 w-4.5" />
-      </span>
+      <img
+        src="/logo.png"
+        alt="AI Trip Buddy logo"
+        className="h-9 w-9 shrink-0 rounded-lg object-cover shadow-soft"
+      />
       {!compact && (
         <span className="truncate text-[15px] font-semibold tracking-tight">AI Trip Buddy</span>
       )}
