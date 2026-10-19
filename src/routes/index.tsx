@@ -129,7 +129,7 @@ function Landing() {
   return (
     <div className="min-h-dvh bg-background">
       <header className="sticky top-0 z-40 border-b border-border/70 bg-background/80 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3.5 lg:px-8">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 lg:px-8">
           <Logo />
           <nav aria-label="Primary" className="hidden items-center gap-7 text-sm md:flex">
             <a href="#features" className="text-muted-foreground hover:text-foreground">Features</a>
@@ -137,11 +137,12 @@ function Landing() {
             <a href="#preview" className="text-muted-foreground hover:text-foreground">Product</a>
             <a href="#faq" className="text-muted-foreground hover:text-foreground">FAQ</a>
           </nav>
-          <div className="flex shrink-0 items-center gap-2">
-            <Button variant="ghost" size="icon" onClick={toggle} aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"} title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}>
+          <div className="flex shrink-0 items-center gap-1.5">
+            <Button className="h-9 w-9" variant="ghost" size="icon" onClick={toggle} aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"} title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}>
               {theme === "dark" ? <Sun /> : <Moon />}
             </Button>
-            <Button asChild size="sm"><Link to="/app/dashboard">Open app <ArrowUpRight /></Link></Button>
+            <Button asChild variant="ghost" size="sm" className="h-9"><Link to="/login">Log in</Link></Button>
+            <Button asChild size="sm" className="h-9"><Link to="/signup">Get started <ArrowUpRight /></Link></Button>
           </div>
         </div>
       </header>

@@ -36,7 +36,7 @@ const nav = [
   { to: "/app/settings", label: "Settings", icon: Settings },
 ] as const;
 
-export function Logo({ compact = false }: { compact?: boolean }) {
+export function Logo({ compact = false, textClassName }: { compact?: boolean; textClassName?: string }) {
   return (
     <Link to="/" className="flex min-w-0 items-center gap-2.5">
       <img
@@ -45,7 +45,9 @@ export function Logo({ compact = false }: { compact?: boolean }) {
         className="h-9 w-9 shrink-0 rounded-lg object-cover shadow-soft"
       />
       {!compact && (
-        <span className="truncate text-[15px] font-semibold tracking-tight">AI Trip Buddy</span>
+        <span className={cn("truncate text-[15px] font-semibold tracking-tight", textClassName)}>
+          AI Trip Buddy
+        </span>
       )}
     </Link>
   );
@@ -86,7 +88,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-dvh bg-background">
       <header className="sticky top-0 z-40 border-b border-border bg-card/85 backdrop-blur-xl">
-        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-3 sm:flex sm:justify-between lg:px-6">
+        <div className="grid h-16 grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 sm:flex sm:justify-between lg:px-6">
           <div className="flex min-w-0 items-center gap-3">
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
@@ -136,7 +138,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       </header>
 
       <div className="flex">
-        <aside className="sticky top-[65px] hidden h-[calc(100dvh-65px)] w-64 shrink-0 border-r border-sidebar-border bg-sidebar px-3 py-5 lg:block">
+        <aside className="sticky top-16 hidden h-[calc(100dvh-4rem)] w-64 shrink-0 border-r border-sidebar-border bg-sidebar px-3 py-5 lg:block">
           <NavList />
           <div className="mt-6 space-y-5">
             <div className="space-y-2 rounded-lg border border-sidebar-border bg-muted/40 p-4">
