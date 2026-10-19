@@ -30,13 +30,13 @@ export const Route = createFileRoute("/app/dashboard")({
     meta: [
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { title: "Dashboard · AI Trip Buddy" },
+      { title: "Dashboard · GoWander" },
       {
         name: "description",
         content:
           "Your travel dashboard: upcoming trips, budget health, AI conversations and travel analytics in one place.",
       },
-      { property: "og:title", content: "Dashboard · AI Trip Buddy" },
+      { property: "og:title", content: "Dashboard · GoWander" },
       {
         property: "og:description",
         content: "Track upcoming trips, budgets and AI-generated itineraries across India.",

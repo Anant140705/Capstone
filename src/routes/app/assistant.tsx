@@ -14,13 +14,13 @@ export const Route = createFileRoute("/app/assistant")({
     meta: [
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { title: "AI Assistant · AI Trip Buddy" },
+      { title: "AI Assistant · GoWander" },
       {
         name: "description",
         content:
           "Chat with your travel assistant to cut budgets, swap destinations and regenerate days — the itinerary updates beside the chat.",
       },
-      { property: "og:title", content: "AI Assistant · AI Trip Buddy" },
+      { property: "og:title", content: "AI Assistant · GoWander" },
       {
         property: "og:description",
         content: "Conversationally reshape your India itinerary with an AI travel assistant.",

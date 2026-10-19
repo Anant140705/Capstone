@@ -1,12 +1,12 @@
 # India Atlas AI
 
-# AI Trip Buddy – AI-Powered Smart Travel Planner for India
+# GoWander – AI-Powered Smart Travel Planner for India
 
-Build a modern, production-ready SaaS web application called **AI Trip Buddy**.
+Build a modern, production-ready SaaS web application called **GoWander**.
 
 ## Overview
 
-AI Trip Buddy is an AI-powered travel planning platform for India.
+GoWander is an AI-powered travel planning platform for India.
 
 Unlike traditional travel websites, this platform does NOT focus on hotel or ticket booking.
 

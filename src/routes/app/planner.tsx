@@ -23,13 +23,13 @@ export const Route = createFileRoute("/app/planner")({
     meta: [
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { title: "Trip Planner · AI Trip Buddy" },
+      { title: "Trip Planner · GoWander" },
       {
         name: "description",
         content:
           "Tell the planner your cities, days, budget and interests — the AI builds a day-by-day India itinerary.",
       },
-      { property: "og:title", content: "Trip Planner · AI Trip Buddy" },
+      { property: "og:title", content: "Trip Planner · GoWander" },
       {
         property: "og:description",
         content: "A guided multi-step form that turns your preferences into an optimised itinerary.",

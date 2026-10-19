@@ -25,13 +25,13 @@ export const Route = createFileRoute("/app/itinerary")({
     meta: [
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { title: "Your Itinerary · AI Trip Buddy" },
+      { title: "Your Itinerary · GoWander" },
       {
         name: "description",
         content:
           "A day-by-day timeline with morning, afternoon and evening plans, travel time, hotels, weather and cost estimates.",
       },
-      { property: "og:title", content: "Your Itinerary · AI Trip Buddy" },
+      { property: "og:title", content: "Your Itinerary · GoWander" },
       {
         property: "og:description",
         content: "AI-generated day-by-day India itinerary with routes, hotels and costs.",

@@ -157,7 +157,7 @@ export function AuthPage({ mode }: { mode: AuthMode }) {
         </section>
 
         <p className="mt-5 text-center text-xs text-white/70">
-          By continuing, you agree to AI Trip Buddy&apos;s terms and privacy policy.
+          By continuing, you agree to GoWander&apos;s terms and privacy policy.
         </p>
       </div>
     </main>

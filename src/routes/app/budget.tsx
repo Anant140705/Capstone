@@ -24,13 +24,13 @@ export const Route = createFileRoute("/app/budget")({
     meta: [
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { title: "Budget Dashboard · AI Trip Buddy" },
+      { title: "Budget Dashboard · GoWander" },
       {
         name: "description",
         content:
           "Expense breakdown, planned versus actual spend, budget health and AI savings suggestions for your trip.",
       },
-      { property: "og:title", content: "Budget Dashboard · AI Trip Buddy" },
+      { property: "og:title", content: "Budget Dashboard · GoWander" },
       {
         property: "og:description",
         content: "Track trip spending across accommodation, transport, food and tickets.",

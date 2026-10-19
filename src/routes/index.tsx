@@ -29,13 +29,13 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "AI Trip Buddy — Plan Your Perfect Journey Across India" },
+      { title: "GoWander — Plan Your Perfect Journey Across India" },
       {
         name: "description",
         content:
           "Generate personalized itineraries, optimize travel routes, discover hidden gems and estimate budgets for trips across India with AI.",
       },
-      { property: "og:title", content: "AI Trip Buddy — AI travel planner for India" },
+      { property: "og:title", content: "GoWander — AI travel planner for India" },
       {
         property: "og:description",
         content:
@@ -107,7 +107,7 @@ const testimonials = [
 
 const faqs = [
   {
-    q: "Does AI Trip Buddy book hotels or tickets?",
+    q: "Does GoWander book hotels or tickets?",
     a: "No. We deliberately stay out of booking. The platform plans the trip — routes, days, stays, costs — and you book wherever you prefer.",
   },
   {
@@ -152,14 +152,14 @@ function Landing() {
           <img src={heroImage} alt="Lake Pichola and Udaipur’s marble palaces in morning light" width={1920} height={1024} fetchPriority="high" className="absolute inset-0 -z-20 h-full w-full object-cover object-center" />
           <div className="absolute inset-0 -z-10 bg-photo-overlay/50" />
           <div className="mx-auto flex min-h-[560px] max-w-7xl flex-col justify-between gap-10 px-5 py-12 sm:min-h-[620px] sm:py-14 lg:px-8">
-            <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-2xl space-y-6">
+            <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="mx-auto flex min-h-[390px] w-full max-w-2xl flex-col items-center space-y-6 text-center sm:min-h-[460px]">
               <p className="flex items-center gap-2 text-sm font-medium text-photo-muted"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> A little less planning. A lot more India.</p>
               <div className="space-y-3">
-                <h1 className="text-4xl font-semibold leading-tight sm:text-6xl">AI Trip Buddy</h1>
+                <h1 className="font-mugle text-4xl font-normal leading-tight sm:text-6xl">GoWander</h1>
                 <p className="text-2xl font-medium leading-snug sm:text-3xl">Your next great Indian journey.</p>
               </div>
-              <p className="max-w-lg text-base leading-relaxed text-photo-muted sm:text-lg">From lakeside mornings to mountain detours. Find your places, shape your days, and bring it all together in one trip.</p>
-              <div className="flex flex-wrap gap-3 pt-2">
+              <p className="max-w-lg text-sm leading-relaxed text-photo-muted sm:text-base">From lakeside mornings to mountain detours. Find your places, shape your days, and bring it all together in one trip.</p>
+              <div className="mt-auto flex flex-wrap justify-center gap-3 pt-2">
                 <Button asChild size="lg" className="h-12"><Link to="/app/planner">Plan my trip <ArrowRight /></Link></Button>
                 <Button asChild variant="outline" size="lg" className="h-12 border-photo-foreground/40 bg-photo-foreground/10 text-photo-foreground backdrop-blur-sm hover:bg-photo-foreground/20 hover:text-photo-foreground"><Link to="/app/explore">Explore India <ArrowUpRight /></Link></Button>
               </div>
@@ -332,7 +332,7 @@ function Landing() {
       <footer className="border-t border-border bg-card/60">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-10 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between lg:px-8">
           <Logo />
-          <p>© 2026 AI Trip Buddy. Planning, not booking.</p>
+          <p>© 2026 GoWander. Planning, not booking.</p>
         </div>
       </footer>
     </div>

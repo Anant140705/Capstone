@@ -13,12 +13,12 @@ export const Route = createFileRoute("/app/saved")({
     meta: [
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { title: "Saved Trips · AI Trip Buddy" },
+      { title: "Saved Trips · GoWander" },
       {
         name: "description",
         content: "All your saved and draft India itineraries — open, edit, duplicate or delete.",
       },
-      { property: "og:title", content: "Saved Trips · AI Trip Buddy" },
+      { property: "og:title", content: "Saved Trips · GoWander" },
       { property: "og:description", content: "Your library of AI-generated India itineraries." },
     ],
   }),

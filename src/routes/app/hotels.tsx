@@ -14,13 +14,13 @@ export const Route = createFileRoute("/app/hotels")({
     meta: [
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { title: "Hotels · AI Trip Buddy" },
+      { title: "Hotels · GoWander" },
       {
         name: "description",
         content:
           "Stay recommendations matched to your route and budget — filter by luxury, family, business or couples.",
       },
-      { property: "og:title", content: "Hotels · AI Trip Buddy" },
+      { property: "og:title", content: "Hotels · GoWander" },
       {
         property: "og:description",
         content: "AI-matched hotel recommendations along your India itinerary.",

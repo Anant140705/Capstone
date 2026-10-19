@@ -38,15 +38,20 @@ const nav = [
 
 export function Logo({ compact = false, textClassName }: { compact?: boolean; textClassName?: string }) {
   return (
-    <Link to="/" className="flex min-w-0 items-center gap-2.5">
+    <Link to="/" className="flex min-w-0 items-center gap-2.5 overflow-visible">
       <img
         src="/logo.png"
-        alt="AI Trip Buddy logo"
+        alt="GoWander logo"
         className="h-9 w-9 shrink-0 rounded-lg object-cover shadow-soft"
       />
       {!compact && (
-        <span className={cn("truncate text-[15px] font-semibold tracking-tight", textClassName)}>
-          AI Trip Buddy
+        <span
+          className={cn(
+            "font-mugle inline-block whitespace-nowrap text-[18px] font-normal leading-[1.35] tracking-tight",
+            textClassName,
+          )}
+        >
+          GoWander
         </span>
       )}
     </Link>

@@ -16,16 +16,16 @@ export const Route = createFileRoute("/app/settings")({
     meta: [
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { title: "Profile & Settings · AI Trip Buddy" },
+      { title: "Profile & Settings · GoWander" },
       {
         name: "description",
         content:
           "Manage your profile, travel preferences, bookmarks, theme, notifications and account security.",
       },
-      { property: "og:title", content: "Profile & Settings · AI Trip Buddy" },
+      { property: "og:title", content: "Profile & Settings · GoWander" },
       {
         property: "og:description",
-        content: "Personalise how AI Trip Buddy plans your journeys.",
+        content: "Personalise how GoWander plans your journeys.",
       },
     ],
   }),

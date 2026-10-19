@@ -4,6 +4,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+  font-family: "Mugle";
+  src: url("/mugle.otf") format("opentype");
+  font-display: swap;
+}
+
 @theme inline {
   --font-sans:
     "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -222,6 +228,67 @@
 
 @utility gradient-primary {
   background-image: var(--gradient-primary);
+}
+
+@utility font-mugle {
+  font-family: "Mugle", cursive;
+}
+
+.cursor-follower-dot,
+.cursor-follower-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0;
+  translate: -50% -50%;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.cursor-follower-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background: var(--primary);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 55%, transparent);
+}
+
+.cursor-follower-ring {
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--primary);
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    width 180ms ease,
+    height 180ms ease;
+}
+
+.cursor-follower-dot.is-visible,
+.cursor-follower-ring.is-visible {
+  opacity: 1;
+}
+
+.cursor-follower-dot.is-button {
+  transform: scale(1.55);
+}
+
+.cursor-follower-ring.is-button {
+  width: 19px;
+  height: 19px;
+  opacity: 0.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-follower-dot,
+  .cursor-follower-ring {
+    transition: none;
+  }
 }
 
 @utility text-gradient {

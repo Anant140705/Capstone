@@ -24,13 +24,13 @@ export const Route = createFileRoute("/app/explore")({
     meta: [
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { title: "Explore India · AI Trip Buddy" },
+      { title: "Explore India · GoWander" },
       {
         name: "description",
         content:
           "Browse an interactive map of India, filter destinations by state, category, budget and duration, and add them to your trip.",
       },
-      { property: "og:title", content: "Explore India · AI Trip Buddy" },
+      { property: "og:title", content: "Explore India · GoWander" },
       {
         property: "og:description",
         content: "An interactive destination explorer for planning trips across India.",

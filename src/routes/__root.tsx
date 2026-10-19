@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { Toaster } from "@/components/ui/sonner";
+import { CursorFollower } from "@/components/ui/CursorFollower";
 import { MotionConfig } from "motion/react";
 
 function NotFoundComponent() {
@@ -79,14 +80,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "AI Trip Buddy — AI travel planner for India" },
+      { title: "GoWander — AI travel planner for India" },
       {
         name: "description",
         content:
           "Plan trips across India with AI: itineraries, optimized routes, hotels, budgets and hidden gems.",
       },
-      { name: "author", content: "AI Trip Buddy" },
-      { property: "og:title", content: "AI Trip Buddy — AI travel planner for India" },
+      { name: "author", content: "GoWander" },
+      { property: "og:title", content: "GoWander — AI travel planner for India" },
       {
         property: "og:description",
         content:
@@ -137,6 +138,7 @@ function RootComponent() {
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <MotionConfig reducedMotion="user"><Outlet /></MotionConfig>
       <Toaster position="top-right" richColors />
+      <CursorFollower />
     </QueryClientProvider>
   );
 }
