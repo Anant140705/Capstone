@@ -1,4 +1,4 @@
-# India Atlas AI
+# India Atlas AI - GoWander
 
 # GoWander – AI-Powered Smart Travel Planner for India
 
