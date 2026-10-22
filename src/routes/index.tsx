@@ -247,7 +247,10 @@ function Landing() {
                 <span className="flex items-center gap-2"><Wallet className="h-4 w-4" /> Your budget</span>
                 <span className="flex items-center gap-2"><Sparkles className="h-4 w-4" /> Your kind of trip</span>
               </div>
-              <div className="flex items-center gap-2 text-sm"><MapPin className="h-4 w-4" /><span>Udaipur, Rajasthan</span></div>
+              <div className="flex items-center gap-2 text-sm">
+                <MapPin className="h-4 w-4" />
+                <span>{theme === "dark" ? "Vestrahorn mountain, Iceland" : "Udaipur, Rajasthan"}</span>
+              </div>
             </div>
           </div>
         </section>
@@ -326,7 +329,7 @@ function Landing() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: i * 0.14 }}
-                className="surface hover-lift overflow-hidden"
+                className="product-preview-card surface hover-lift overflow-hidden"
               >
                 <div className="aurora h-44 border-b border-border p-4">
                   <div className="h-full w-full">

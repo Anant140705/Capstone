@@ -467,6 +467,24 @@ html.theme-switching::after {
   color: #fff;
 }
 
+.product-preview-card {
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease;
+}
+
+.product-preview-card:hover {
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--primary) 35%, transparent),
+    0 18px 42px -14px color-mix(in srgb, var(--primary) 45%, transparent);
+}
+
+.dark .product-preview-card:hover {
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 35%),
+    0 18px 42px -14px rgb(255 255 255 / 45%);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
@@ -490,6 +508,10 @@ html.theme-switching::after {
 
   .how-step {
     transition-duration: 450ms !important;
+  }
+
+  .product-preview-card {
+    transition-duration: 350ms !important;
   }
 
   html::after {
