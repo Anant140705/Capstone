@@ -216,7 +216,14 @@ function Landing() {
 
       <main>
         <section className="relative isolate min-h-[560px] overflow-hidden bg-photo-overlay text-photo-foreground sm:min-h-[620px]">
-          <img src={heroImage} alt="Lake Pichola and Udaipur’s marble palaces in morning light" width={1920} height={1024} fetchPriority="high" className="absolute inset-0 -z-20 h-full w-full object-cover object-center" />
+          <img
+            src={theme === "dark" ? "/landing-dark.png" : heroImage}
+            alt="Lake Pichola and Udaipur’s marble palaces in morning light"
+            width={1920}
+            height={1024}
+            fetchPriority="high"
+            className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
+          />
           <div className="absolute inset-0 -z-10 bg-photo-overlay/50" />
           <div className="mx-auto flex min-h-[600px] w-full flex-col justify-between gap-12 px-5 py-14 sm:min-h-[670px] sm:px-8 sm:py-16 lg:px-12 xl:px-16">
             <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="mx-auto flex min-h-[420px] w-full max-w-2xl flex-col items-center space-y-7 text-center sm:min-h-[500px]">
@@ -260,7 +267,7 @@ function Landing() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.8, delay: i * 0.12 }}
-                className="group border-t border-border py-7 pr-6"
+                className="feature-card group min-h-full"
               >
                 <span className="grid h-10 w-10 place-items-center rounded-lg bg-primary-soft text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                   <f.icon className="h-5 w-5" />
