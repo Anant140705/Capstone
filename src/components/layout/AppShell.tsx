@@ -1,6 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import {
   LayoutDashboard,
+  House,
   Compass,
   Route as RouteIcon,
   CalendarRange,
@@ -25,6 +26,7 @@ import { useTheme } from "@/hooks/use-theme";
 import { cn } from "@/lib/utils";
 
 const nav = [
+  { to: "/", label: "Home", icon: House },
   { to: "/app/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { to: "/app/explore", label: "Explore", icon: Compass },
   { to: "/app/planner", label: "Trip Planner", icon: RouteIcon },
