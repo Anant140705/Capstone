@@ -109,9 +109,6 @@ export function AppShell({ children }: { children: ReactNode }) {
                   <Logo />
                 </div>
                 <NavList onNavigate={() => setOpen(false)} />
-                <div className="mt-6 border-t border-sidebar-border pt-4">
-                  <ThemeToggleButton />
-                </div>
               </SheetContent>
             </Sheet>
             <div className="hidden lg:block lg:w-52">
@@ -162,20 +159,5 @@ export function AppShell({ children }: { children: ReactNode }) {
         <main className="min-w-0 flex-1 px-4 py-7 lg:px-8 lg:py-8">{children}</main>
       </div>
     </div>
-  );
-}
-
-function ThemeToggleButton() {
-  const { theme, toggle } = useTheme();
-  return (
-    <Button
-      variant="ghost"
-      className="w-full justify-start gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-sidebar-foreground/80 hover:bg-sidebar-accent/60 hover:text-sidebar-accent-foreground"
-      onClick={toggle}
-      aria-label="Toggle theme"
-    >
-      {theme === "dark" ? <Sun className="h-4.5 w-4.5 shrink-0" /> : <Moon className="h-4.5 w-4.5 shrink-0" />}
-      <span className="truncate">{theme === "dark" ? "Light mode" : "Dark mode"}</span>
-    </Button>
   );
 }

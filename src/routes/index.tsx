@@ -206,7 +206,7 @@ function Landing() {
             <a href="#preview" onClick={scrollToSection} className="text-muted-foreground hover:text-foreground">Product</a>
             <a href="#faq" onClick={scrollToSection} className="text-muted-foreground hover:text-foreground">FAQ</a>
           </nav>
-          <div className="flex shrink-0 items-center gap-1.5">
+          <div className="landing-nav-actions flex shrink-0 items-center gap-1.5">
             <Button className="h-9 w-9" variant="ghost" size="icon" onClick={toggle} aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"} title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}>
               {theme === "dark" ? <Sun /> : <Moon />}
             </Button>
@@ -234,14 +234,14 @@ function Landing() {
                 <h1 className="hero-wordmark font-mugle font-bold leading-tight">GoWander</h1>
               </div>
             </motion.div>
-            <p className="absolute bottom-[29%] left-1/2 -translate-x-1/2 text-lg font-normal leading-snug text-photo-foreground sm:bottom-[28%] sm:text-xl">
+            <p className="hero-subtitle absolute bottom-[29%] left-1/2 -translate-x-1/2 text-lg font-normal leading-snug text-photo-foreground sm:bottom-[28%] sm:text-xl">
               Your next great Indian journey.
             </p>
-            <div className="absolute bottom-[18%] left-1/2 flex -translate-x-1/2 flex-wrap justify-center gap-4">
+            <div className="hero-actions absolute bottom-[18%] left-1/2 flex -translate-x-1/2 flex-wrap justify-center gap-4">
               <Button asChild size="lg" className="h-12"><Link to="/app/planner">Plan my trip <ArrowRight /></Link></Button>
               <Button asChild variant="outline" size="lg" className="h-12 border-photo-foreground/40 bg-photo-foreground/10 text-photo-foreground backdrop-blur-sm hover:bg-photo-foreground/20 hover:text-photo-foreground"><Link to="/app/explore">Explore India <ArrowUpRight /></Link></Button>
             </div>
-            <div className="absolute bottom-[7%] left-5 right-5 flex flex-wrap items-end justify-between gap-6 border-t border-photo-foreground/25 pt-6 sm:bottom-[8%] sm:left-8 sm:right-8 lg:left-12 lg:right-12 xl:left-16 xl:right-16">
+            <div className="hero-meta absolute bottom-[7%] left-5 right-5 flex flex-wrap items-end justify-between gap-6 border-t border-photo-foreground/25 pt-6 sm:bottom-[8%] sm:left-8 sm:right-8 lg:left-12 lg:right-12 xl:left-16 xl:right-16">
               <div className="flex flex-wrap gap-x-7 gap-y-3 text-xs text-photo-muted sm:text-sm">
                 <span className="flex items-center gap-2"><RouteIcon className="h-4 w-4" /> Your route</span>
                 <span className="flex items-center gap-2"><Wallet className="h-4 w-4" /> Your budget</span>
