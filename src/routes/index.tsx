@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
+import { useLayoutEffect, type MouseEvent } from "react";
 import {
   Sparkles,
   Route as RouteIcon,
@@ -140,18 +141,68 @@ const faqs = [
   },
 ];
 
+const sectionReveal = {
+  initial: { opacity: 0, y: 28 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.15 },
+  transition: { duration: 1, ease: "easeOut" },
+};
+
 function Landing() {
   const { theme, toggle } = useTheme();
+
+  useLayoutEffect(() => {
+    const previousScrollRestoration = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
+    window.history.replaceState(null, "", window.location.pathname);
+    window.scrollTo(0, 0);
+
+    return () => {
+      window.history.scrollRestoration = previousScrollRestoration;
+    };
+  }, []);
+
+  const scrollToSection = (event: MouseEvent<HTMLAnchorElement>) => {
+    const targetId = event.currentTarget.getAttribute("href");
+    if (!targetId?.startsWith("#")) return;
+
+    const target = document.querySelector(targetId);
+    if (!target) return;
+
+    event.preventDefault();
+    const header = document.querySelector("header");
+    const headerHeight = header?.getBoundingClientRect().height ?? 0;
+    const startPosition = window.scrollY;
+    const targetPosition =
+      window.scrollY + target.getBoundingClientRect().top - headerHeight - 16;
+    const distance = targetPosition - startPosition;
+    const duration = 900;
+    const startTime = performance.now();
+
+    const animateScroll = (currentTime: number) => {
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+      window.scrollTo(0, startPosition + distance * easedProgress);
+
+      if (progress < 1) {
+        window.requestAnimationFrame(animateScroll);
+      }
+    };
+
+    window.requestAnimationFrame(animateScroll);
+    window.history.pushState(null, "", targetId);
+  };
+
   return (
     <div className="landing-page min-h-dvh bg-background">
       <header className="sticky top-0 z-40 border-b border-border/70 bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex h-[4.5rem] w-full items-center justify-between gap-5 px-5 sm:px-8 lg:px-12 xl:px-16">
           <Logo />
           <nav aria-label="Primary" className="hidden items-center gap-7 text-sm md:flex">
-            <a href="#features" className="text-muted-foreground hover:text-foreground">Features</a>
-            <a href="#how" className="text-muted-foreground hover:text-foreground">How it works</a>
-            <a href="#preview" className="text-muted-foreground hover:text-foreground">Product</a>
-            <a href="#faq" className="text-muted-foreground hover:text-foreground">FAQ</a>
+            <a href="#features" onClick={scrollToSection} className="text-muted-foreground hover:text-foreground">Features</a>
+            <a href="#how" onClick={scrollToSection} className="text-muted-foreground hover:text-foreground">How it works</a>
+            <a href="#preview" onClick={scrollToSection} className="text-muted-foreground hover:text-foreground">Product</a>
+            <a href="#faq" onClick={scrollToSection} className="text-muted-foreground hover:text-foreground">FAQ</a>
           </nav>
           <div className="flex shrink-0 items-center gap-1.5">
             <Button className="h-9 w-9" variant="ghost" size="icon" onClick={toggle} aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"} title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}>
@@ -192,7 +243,7 @@ function Landing() {
         </section>
 
         {/* Features */}
-        <section id="features" className="mx-auto w-full px-5 py-20 sm:px-8 lg:px-12 xl:px-16">
+        <motion.section id="features" {...sectionReveal} className="mx-auto w-full px-5 py-20 sm:px-8 lg:px-12 xl:px-16">
           <div className="max-w-2xl">
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
               Every detail. One beautiful journey.
@@ -208,7 +259,7 @@ function Landing() {
                 initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: i * 0.05 }}
+                transition={{ duration: 0.8, delay: i * 0.12 }}
                 className="group border-t border-border py-7 pr-6"
               >
                 <span className="grid h-10 w-10 place-items-center rounded-lg bg-primary-soft text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
@@ -219,10 +270,10 @@ function Landing() {
               </motion.article>
             ))}
           </div>
-        </section>
+        </motion.section>
 
         {/* How it works */}
-        <section id="how" className="border-y border-border bg-card/60">
+        <motion.section id="how" {...sectionReveal} className="border-y border-border bg-card/60">
           <div className="mx-auto w-full px-5 py-20 sm:px-8 lg:px-12 xl:px-16">
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">How it works</h2>
             <div className="mt-12 grid gap-7 md:grid-cols-3">
@@ -232,7 +283,7 @@ function Landing() {
                   initial={{ opacity: 0, y: 18 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.08 }}
+                  transition={{ duration: 0.8, delay: i * 0.16 }}
                   className="space-y-2"
                 >
                   <span className="text-sm font-semibold text-primary">{s.n}</span>
@@ -242,10 +293,10 @@ function Landing() {
               ))}
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Screenshots */}
-        <section id="preview" className="mx-auto w-full px-5 py-20 sm:px-8 lg:px-12 xl:px-16">
+        <motion.section id="preview" {...sectionReveal} className="mx-auto w-full px-5 py-20 sm:px-8 lg:px-12 xl:px-16">
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Inside the product</h2>
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {[
@@ -258,7 +309,7 @@ function Landing() {
                 initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.06 }}
+                transition={{ duration: 0.8, delay: i * 0.14 }}
                 className="surface hover-lift overflow-hidden"
               >
                 <div className="aurora h-44 border-b border-border p-4">
@@ -278,10 +329,10 @@ function Landing() {
               </motion.div>
             ))}
           </div>
-        </section>
+        </motion.section>
 
         {/* Testimonials */}
-        <section className="border-y border-border bg-card/60">
+        <motion.section {...sectionReveal} className="border-y border-border bg-card/60">
           <div className="mx-auto w-full px-5 py-20 sm:px-8 lg:px-12 xl:px-16">
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
               Stories from the road
@@ -293,7 +344,7 @@ function Landing() {
                   initial={{ opacity: 0, y: 18 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.06 }}
+                  transition={{ duration: 0.8, delay: i * 0.14 }}
                   className="surface space-y-5 p-7"
                 >
                   <div className="flex gap-0.5">
@@ -310,27 +361,35 @@ function Landing() {
               ))}
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* FAQ */}
-        <section id="faq" className="mx-auto w-full px-5 py-20 sm:px-8 lg:px-12 xl:px-16">
+        <motion.section id="faq" {...sectionReveal} className="mx-auto w-full px-5 py-20 sm:px-8 lg:px-12 xl:px-16">
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
             Frequently asked questions
           </h2>
           <Accordion type="single" collapsible className="mt-10 w-full">
             <div className="grid gap-x-10 md:grid-cols-2">
-              {faqs.map((f) => (
-                <AccordionItem key={f.q} value={f.q}>
-                  <AccordionTrigger className="text-left">{f.q}</AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground">{f.a}</AccordionContent>
-                </AccordionItem>
+              {faqs.map((f, i) => (
+                <motion.div
+                  key={f.q}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.7, delay: i * 0.12 }}
+                >
+                  <AccordionItem value={f.q}>
+                    <AccordionTrigger className="text-left">{f.q}</AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground">{f.a}</AccordionContent>
+                  </AccordionItem>
+                </motion.div>
               ))}
             </div>
           </Accordion>
-        </section>
+        </motion.section>
 
         {/* CTA */}
-        <section className="border-t border-border bg-primary-soft">
+        <motion.section {...sectionReveal} className="border-t border-border bg-primary-soft">
           <div className="mx-auto flex w-full flex-col items-center gap-5 px-5 py-20 text-center sm:px-8 lg:px-12 xl:px-16">
             <h2 className="max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">
               Where will India take you next?
@@ -344,7 +403,7 @@ function Landing() {
               </Link>
             </Button>
           </div>
-        </section>
+        </motion.section>
       </main>
 
       <footer className="border-t border-border bg-card/60">
