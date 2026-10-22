@@ -30,7 +30,7 @@ export function AuthPage({ mode }: { mode: AuthMode }) {
   return (
     <main className="relative isolate flex min-h-dvh items-center justify-center overflow-hidden bg-background px-4 py-8">
       <img
-        src={heroImage}
+        src={theme === "dark" ? "/landing-dark.png" : heroImage}
         alt=""
         aria-hidden="true"
         className="absolute inset-0 -z-20 h-full w-full scale-105 object-cover blur-[10px]"

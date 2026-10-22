@@ -195,7 +195,9 @@ function Landing() {
 
   return (
     <div className="landing-page min-h-dvh bg-background">
-      <header className="sticky top-0 z-40 border-b border-border/70 bg-background/80 backdrop-blur-xl">
+      <header
+        className="landing-navbar fixed inset-x-0 top-0 z-40 border-b border-border/70 bg-background/80 backdrop-blur-xl"
+      >
         <div className="mx-auto flex h-[4.5rem] w-full items-center justify-between gap-5 px-5 sm:px-8 lg:px-12 xl:px-16">
           <Logo />
           <nav aria-label="Primary" className="hidden items-center gap-7 text-sm md:flex">
@@ -215,7 +217,7 @@ function Landing() {
       </header>
 
       <main>
-        <section className="relative isolate min-h-[560px] overflow-hidden bg-photo-overlay text-photo-foreground sm:min-h-[620px]">
+        <section className="relative isolate h-[100svh] min-h-[620px] overflow-hidden bg-photo-overlay text-photo-foreground">
           <img
             src={theme === "dark" ? "/landing-dark.png" : heroImage}
             alt="Lake Pichola and Udaipur’s marble palaces in morning light"
@@ -225,20 +227,21 @@ function Landing() {
             className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
           />
           <div className="absolute inset-0 -z-10 bg-photo-overlay/50" />
-          <div className="mx-auto flex min-h-[600px] w-full flex-col justify-between gap-12 px-5 py-14 sm:min-h-[670px] sm:px-8 sm:py-16 lg:px-12 xl:px-16">
-            <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="mx-auto flex min-h-[420px] w-full max-w-2xl flex-col items-center space-y-7 text-center sm:min-h-[500px]">
+          <div className="relative mx-auto h-full w-full px-5 sm:px-8 lg:px-12 xl:px-16">
+            <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="absolute left-1/2 top-[14%] flex w-[calc(100%-2.5rem)] max-w-2xl -translate-x-1/2 flex-col items-center space-y-4 text-center sm:top-[16%] sm:w-[calc(100%-4rem)]">
               <p className="flex items-center gap-2 text-sm font-medium text-photo-muted"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> A little less planning. A lot more India.</p>
               <div className="space-y-4">
-                <h1 className="font-mugle text-4xl font-normal leading-tight sm:text-6xl">GoWander</h1>
-                <p className="text-2xl font-medium leading-snug sm:text-3xl">Your next great Indian journey.</p>
-              </div>
-              <p className="max-w-lg text-sm leading-relaxed text-photo-muted sm:text-base">From lakeside mornings to mountain detours. Find your places, shape your days, and bring it all together in one trip.</p>
-              <div className="mt-auto flex flex-wrap justify-center gap-4 pt-3">
-                <Button asChild size="lg" className="h-12"><Link to="/app/planner">Plan my trip <ArrowRight /></Link></Button>
-                <Button asChild variant="outline" size="lg" className="h-12 border-photo-foreground/40 bg-photo-foreground/10 text-photo-foreground backdrop-blur-sm hover:bg-photo-foreground/20 hover:text-photo-foreground"><Link to="/app/explore">Explore India <ArrowUpRight /></Link></Button>
+                <h1 className="hero-wordmark font-mugle font-bold leading-tight">GoWander</h1>
               </div>
             </motion.div>
-            <div className="flex flex-wrap items-end justify-between gap-6 border-t border-photo-foreground/25 pt-6">
+            <p className="absolute bottom-[29%] left-1/2 -translate-x-1/2 text-lg font-normal leading-snug text-photo-foreground sm:bottom-[28%] sm:text-xl">
+              Your next great Indian journey.
+            </p>
+            <div className="absolute bottom-[18%] left-1/2 flex -translate-x-1/2 flex-wrap justify-center gap-4">
+              <Button asChild size="lg" className="h-12"><Link to="/app/planner">Plan my trip <ArrowRight /></Link></Button>
+              <Button asChild variant="outline" size="lg" className="h-12 border-photo-foreground/40 bg-photo-foreground/10 text-photo-foreground backdrop-blur-sm hover:bg-photo-foreground/20 hover:text-photo-foreground"><Link to="/app/explore">Explore India <ArrowUpRight /></Link></Button>
+            </div>
+            <div className="absolute bottom-[7%] left-5 right-5 flex flex-wrap items-end justify-between gap-6 border-t border-photo-foreground/25 pt-6 sm:bottom-[8%] sm:left-8 sm:right-8 lg:left-12 lg:right-12 xl:left-16 xl:right-16">
               <div className="flex flex-wrap gap-x-7 gap-y-3 text-xs text-photo-muted sm:text-sm">
                 <span className="flex items-center gap-2"><RouteIcon className="h-4 w-4" /> Your route</span>
                 <span className="flex items-center gap-2"><Wallet className="h-4 w-4" /> Your budget</span>
@@ -291,9 +294,15 @@ function Landing() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: i * 0.16 }}
-                  className="space-y-2"
+                  className="how-step space-y-2"
                 >
-                  <span className="text-sm font-semibold text-primary">{s.n}</span>
+                  <div className="how-step-number flex items-center gap-4" aria-label={`Step ${s.n}`}>
+                    <span className="h-px flex-1 bg-border" />
+                    <span className="min-w-10 text-center text-sm font-semibold text-primary">
+                      {s.n}
+                    </span>
+                    <span className="h-px flex-1 bg-border" />
+                  </div>
                   <h3 className="text-lg font-semibold">{s.t}</h3>
                   <p className="text-sm text-muted-foreground">{s.d}</p>
                 </motion.div>
