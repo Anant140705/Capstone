@@ -154,7 +154,6 @@ export function AppShell({ children }: { children: ReactNode }) {
                 Upgrade
               </Button>
             </div>
-            <ThemeToggleButton />
           </div>
         </aside>
 

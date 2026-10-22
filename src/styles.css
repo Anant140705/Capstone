@@ -326,6 +326,16 @@ body { letter-spacing: 0; }
 [class*="tracking-tight"] { letter-spacing: 0; }
 ::selection { background: var(--primary-soft); color: var(--foreground); }
 
+.landing-page .text-xs { font-size: calc(0.75rem + 3px); }
+.landing-page .text-sm { font-size: calc(0.875rem + 3px); }
+.landing-page .text-base { font-size: calc(1rem + 3px); }
+.landing-page .text-lg { font-size: calc(1.125rem + 3px); }
+.landing-page .text-xl { font-size: calc(1.25rem + 3px); }
+.landing-page .text-2xl { font-size: calc(1.5rem + 3px); }
+.landing-page .text-3xl { font-size: calc(1.875rem + 3px); }
+.landing-page .text-4xl { font-size: calc(2.25rem + 3px); }
+.landing-page .text-6xl { font-size: calc(3.75rem + 3px); }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
