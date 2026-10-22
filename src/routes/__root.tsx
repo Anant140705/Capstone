@@ -13,6 +13,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { Toaster } from "@/components/ui/sonner";
 import { CursorFollower } from "@/components/ui/CursorFollower";
+import { LoadingScreen } from "@/components/layout/LoadingScreen";
 import { MotionConfig } from "motion/react";
 
 function NotFoundComponent() {
@@ -137,6 +138,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <MotionConfig reducedMotion="user"><Outlet /></MotionConfig>
+      <LoadingScreen />
       <Toaster position="top-right" richColors />
       <CursorFollower />
     </QueryClientProvider>
