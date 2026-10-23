@@ -176,7 +176,7 @@ function Assistant() {
           </div>
         </section>
 
-        <aside className="surface space-y-3 p-5 lg:sticky lg:top-24 lg:self-start">
+        <aside className="surface-static space-y-3 p-5 lg:sticky lg:top-24 lg:self-start">
           <div className="flex items-center justify-between">
             <h2 className="font-semibold">Itinerary preview</h2>
             <Badge variant="secondary">Live</Badge>

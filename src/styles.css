@@ -306,6 +306,19 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   box-shadow: var(--shadow-card);
+  transition:
+    scale 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+  &:hover {
+    position: relative;
+    z-index: 1;
+    scale: 1.012;
+    border-color: var(--primary);
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--primary) 55%, transparent),
+      var(--shadow-lift);
+  }
 }
 
 @utility hover-lift {
@@ -316,6 +329,47 @@
     transform: translateY(-3px);
     box-shadow: var(--shadow-lift);
   }
+
+}
+
+.surface-static {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.surface-static:hover {
+  border-color: var(--primary);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--primary) 55%, transparent),
+    var(--shadow-card);
+}
+
+input,
+textarea,
+select,
+[role="combobox"] {
+  transition:
+    scale 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+input:hover:not(:disabled),
+textarea:hover:not(:disabled),
+select:hover:not(:disabled),
+[role="combobox"]:hover:not([data-disabled]) {
+  position: relative;
+  z-index: 1;
+  scale: 1.012;
+  border-color: var(--primary);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--primary) 55%, transparent),
+    0 4px 14px color-mix(in srgb, var(--primary) 18%, transparent);
 }
 
 @utility grid-faint {
@@ -472,7 +526,11 @@ html.theme-switching::after {
   overflow: hidden;
   padding: 1.75rem 1.5rem;
   border-left: 2px solid var(--color-border);
-  transition: color 450ms ease, border-color 450ms ease;
+  transition:
+    scale 180ms ease,
+    color 450ms ease,
+    border-color 450ms ease,
+    box-shadow 180ms ease;
 }
 
 .feature-card::before {
@@ -487,8 +545,13 @@ html.theme-switching::after {
 }
 
 .feature-card:hover {
+  z-index: 1;
+  scale: 1.012;
   color: #000;
   border-left-color: var(--primary);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--primary) 55%, transparent),
+    var(--shadow-lift);
 }
 
 .feature-card:hover::before {
@@ -517,6 +580,7 @@ html.theme-switching::after {
   z-index: 1;
   scale: 1.04;
   outline-color: var(--primary);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--primary) 55%, transparent), var(--shadow-lift);
 }
 
 .dark .feature-card:hover,
@@ -571,6 +635,15 @@ html.theme-switching::after {
 
   .product-preview-card {
     transition-duration: 350ms !important;
+  }
+
+  .surface:hover,
+  .feature-card:hover,
+  input:hover:not(:disabled),
+  textarea:hover:not(:disabled),
+  select:hover:not(:disabled),
+  [role="combobox"]:hover:not([data-disabled]) {
+    scale: 1;
   }
 
   html::after {

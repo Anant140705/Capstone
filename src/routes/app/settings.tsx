@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { toast } from "sonner";
+import { ProfileSection } from "@/components/layout/ProfileSection";
 import { PageHeader } from "@/components/travel/PageHeader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTheme } from "@/hooks/use-theme";
 import { destinations } from "@/data/destinations";
@@ -50,30 +50,7 @@ function Settings() {
         </TabsList>
 
         <TabsContent value="profile" className="mt-4">
-          <section className="surface space-y-5 p-6">
-            <div className="flex min-w-0 items-center gap-4">
-              <Avatar className="h-16 w-16 shrink-0">
-                <AvatarFallback className="bg-primary-soft text-lg font-semibold text-primary">
-                  AR
-                </AvatarFallback>
-              </Avatar>
-              <div className="min-w-0">
-                <h2 className="truncate text-lg font-semibold">Aarav Rathore</h2>
-                <p className="truncate text-sm text-muted-foreground">aarav@tripbuddy.ai</p>
-              </div>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="space-y-2">
-                <Label htmlFor="name">Full name</Label>
-                <Input id="name" defaultValue="Aarav Rathore" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="city">Home city</Label>
-                <Input id="city" defaultValue="New Delhi" />
-              </div>
-            </div>
-            <Button onClick={() => toast.success("Profile saved")}>Save changes</Button>
-          </section>
+          <ProfileSection />
         </TabsContent>
 
         <TabsContent value="preferences" className="mt-4 space-y-4">

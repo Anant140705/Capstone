@@ -21,6 +21,7 @@ import { Route as AppExploreRouteImport } from './routes/app/explore'
 import { Route as AppHotelsRouteImport } from './routes/app/hotels'
 import { Route as AppItineraryRouteImport } from './routes/app/itinerary'
 import { Route as AppPlannerRouteImport } from './routes/app/planner'
+import { Route as AppProfileRouteImport } from './routes/app/profile'
 import { Route as AppSavedRouteImport } from './routes/app/saved'
 import { Route as AppSettingsRouteImport } from './routes/app/settings'
 
@@ -84,6 +85,11 @@ const AppPlannerRoute = AppPlannerRouteImport.update({
   path: '/planner',
   getParentRoute: () => AppRouteRoute,
 } as any)
+const AppProfileRoute = AppProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AppRouteRoute,
+} as any)
 const AppSavedRoute = AppSavedRouteImport.update({
   id: '/saved',
   path: '/saved',
@@ -108,6 +114,7 @@ export interface FileRoutesByFullPath {
   '/app/hotels': typeof AppHotelsRoute
   '/app/itinerary': typeof AppItineraryRoute
   '/app/planner': typeof AppPlannerRoute
+  '/app/profile': typeof AppProfileRoute
   '/app/saved': typeof AppSavedRoute
   '/app/settings': typeof AppSettingsRoute
 }
@@ -124,6 +131,7 @@ export interface FileRoutesByTo {
   '/app/hotels': typeof AppHotelsRoute
   '/app/itinerary': typeof AppItineraryRoute
   '/app/planner': typeof AppPlannerRoute
+  '/app/profile': typeof AppProfileRoute
   '/app/saved': typeof AppSavedRoute
   '/app/settings': typeof AppSettingsRoute
 }
@@ -141,6 +149,7 @@ export interface FileRoutesById {
   '/app/hotels': typeof AppHotelsRoute
   '/app/itinerary': typeof AppItineraryRoute
   '/app/planner': typeof AppPlannerRoute
+  '/app/profile': typeof AppProfileRoute
   '/app/saved': typeof AppSavedRoute
   '/app/settings': typeof AppSettingsRoute
 }
@@ -159,6 +168,7 @@ export interface FileRouteTypes {
     | '/app/hotels'
     | '/app/itinerary'
     | '/app/planner'
+    | '/app/profile'
     | '/app/saved'
     | '/app/settings'
   fileRoutesByTo: FileRoutesByTo
@@ -175,6 +185,7 @@ export interface FileRouteTypes {
     | '/app/hotels'
     | '/app/itinerary'
     | '/app/planner'
+    | '/app/profile'
     | '/app/saved'
     | '/app/settings'
   id:
@@ -191,6 +202,7 @@ export interface FileRouteTypes {
     | '/app/hotels'
     | '/app/itinerary'
     | '/app/planner'
+    | '/app/profile'
     | '/app/saved'
     | '/app/settings'
   fileRoutesById: FileRoutesById
@@ -289,6 +301,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppPlannerRouteImport
       parentRoute: typeof AppRouteRoute
     }
+    '/app/profile': {
+      id: '/app/profile'
+      path: '/profile'
+      fullPath: '/app/profile'
+      preLoaderRoute: typeof AppProfileRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
     '/app/saved': {
       id: '/app/saved'
       path: '/saved'
@@ -314,6 +333,7 @@ interface AppRouteRouteChildren {
   AppHotelsRoute: typeof AppHotelsRoute
   AppItineraryRoute: typeof AppItineraryRoute
   AppPlannerRoute: typeof AppPlannerRoute
+  AppProfileRoute: typeof AppProfileRoute
   AppSavedRoute: typeof AppSavedRoute
   AppSettingsRoute: typeof AppSettingsRoute
 }
@@ -326,6 +346,7 @@ const AppRouteRouteChildren: AppRouteRouteChildren = {
   AppHotelsRoute: AppHotelsRoute,
   AppItineraryRoute: AppItineraryRoute,
   AppPlannerRoute: AppPlannerRoute,
+  AppProfileRoute: AppProfileRoute,
   AppSavedRoute: AppSavedRoute,
   AppSettingsRoute: AppSettingsRoute,
 }

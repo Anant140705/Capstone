@@ -132,11 +132,22 @@ export function AppShell({ children }: { children: ReactNode }) {
             <Button variant="ghost" size="icon" aria-label="Toggle theme" title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"} onClick={toggle}>
               {theme === "dark" ? <Sun className="h-4.5 w-4.5" /> : <Moon className="h-4.5 w-4.5" />}
             </Button>
-            <Avatar className="h-9 w-9">
-              <AvatarFallback className="bg-primary-soft text-sm font-semibold text-primary">
-                AR
-              </AvatarFallback>
-            </Avatar>
+            <Button
+              asChild
+              variant="ghost"
+              size="icon"
+              className="h-10 w-10 rounded-full p-0"
+              aria-label="Open profile"
+              title="Open profile"
+            >
+              <Link to="/app/profile">
+                <Avatar className="h-9 w-9">
+                  <AvatarFallback className="bg-primary-soft text-sm font-semibold text-primary">
+                    AR
+                  </AvatarFallback>
+                </Avatar>
+              </Link>
+            </Button>
           </div>
         </div>
       </header>

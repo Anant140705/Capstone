@@ -87,7 +87,7 @@ function Hotels() {
           )}
         </div>
 
-        <aside className="surface overflow-hidden xl:sticky xl:top-24 xl:self-start">
+        <aside className="surface-static overflow-hidden xl:sticky xl:top-24 xl:self-start">
           <div className="h-64">
             <IndiaMap showRoutes className="rounded-none" />
           </div>
