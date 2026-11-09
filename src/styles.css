@@ -11,8 +11,7 @@
 }
 
 @theme inline {
-  --font-sans:
-    "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --color-photo-foreground: var(--photo-foreground);
   --color-photo-muted: var(--photo-muted);
   --color-photo-overlay: var(--photo-overlay);
@@ -114,31 +113,14 @@
   --sidebar-ring: #ff6b2b;
   --shadow-soft: 0 1px 2px 0 oklch(0.21 0.034 264.7 / 0.04);
   --shadow-card:
-    0 1px 3px 0 oklch(0.21 0.034 264.7 / 0.06),
-    0 8px 24px -12px oklch(0.21 0.034 264.7 / 0.12);
+    0 1px 3px 0 oklch(0.21 0.034 264.7 / 0.06), 0 8px 24px -12px oklch(0.21 0.034 264.7 / 0.12);
   --shadow-lift:
-    0 2px 6px 0 oklch(0.21 0.034 264.7 / 0.06),
-    0 24px 48px -20px oklch(0.21 0.034 264.7 / 0.22);
-  --gradient-primary: linear-gradient(
-    135deg,
-    #ff6b2b,
-    #ff8a6b
-  );
-  --gradient-aurora: radial-gradient(
-      60% 60% at 15% 10%,
-      rgb(255 107 43 / 16%),
-      transparent 70%
-    ),
-    radial-gradient(
-      50% 50% at 90% 5%,
-      oklch(0.704 0.128 182.4 / 0.18),
-      transparent 70%
-    ),
-    radial-gradient(
-      45% 45% at 70% 80%,
-      oklch(0.769 0.166 70.1 / 0.12),
-      transparent 70%
-    );
+    0 2px 6px 0 oklch(0.21 0.034 264.7 / 0.06), 0 24px 48px -20px oklch(0.21 0.034 264.7 / 0.22);
+  --gradient-primary: linear-gradient(135deg, #ff6b2b, #ff8a6b);
+  --gradient-aurora:
+    radial-gradient(60% 60% at 15% 10%, rgb(255 107 43 / 16%), transparent 70%),
+    radial-gradient(50% 50% at 90% 5%, oklch(0.704 0.128 182.4 / 0.18), transparent 70%),
+    radial-gradient(45% 45% at 70% 80%, oklch(0.769 0.166 70.1 / 0.12), transparent 70%);
 }
 
 .dark {
@@ -176,25 +158,12 @@
   --sidebar-accent-foreground: #ffb29d;
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: #ff6b2b;
-  --shadow-card:
-    0 1px 3px 0 oklch(0 0 0 / 0.4), 0 8px 24px -12px oklch(0 0 0 / 0.5);
-  --shadow-lift:
-    0 2px 6px 0 oklch(0 0 0 / 0.4), 0 24px 48px -20px oklch(0 0 0 / 0.6);
-  --gradient-aurora: radial-gradient(
-      60% 60% at 15% 10%,
-      rgb(255 107 43 / 22%),
-      transparent 70%
-    ),
-    radial-gradient(
-      50% 50% at 90% 5%,
-      oklch(0.72 0.12 182 / 0.16),
-      transparent 70%
-    ),
-    radial-gradient(
-      45% 45% at 70% 80%,
-      oklch(0.78 0.15 70 / 0.1),
-      transparent 70%
-    );
+  --shadow-card: 0 1px 3px 0 oklch(0 0 0 / 0.4), 0 8px 24px -12px oklch(0 0 0 / 0.5);
+  --shadow-lift: 0 2px 6px 0 oklch(0 0 0 / 0.4), 0 24px 48px -20px oklch(0 0 0 / 0.6);
+  --gradient-aurora:
+    radial-gradient(60% 60% at 15% 10%, rgb(255 107 43 / 22%), transparent 70%),
+    radial-gradient(50% 50% at 90% 5%, oklch(0.72 0.12 182 / 0.16), transparent 70%),
+    radial-gradient(45% 45% at 70% 80%, oklch(0.78 0.15 70 / 0.1), transparent 70%);
 }
 
 @layer base {
@@ -329,7 +298,6 @@
     transform: translateY(-3px);
     box-shadow: var(--shadow-lift);
   }
-
 }
 
 .surface-static {
@@ -379,10 +347,20 @@ select:hover:not(:disabled),
   background-size: 40px 40px;
 }
 
-html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
-body { letter-spacing: 0; }
-[class*="tracking-tight"] { letter-spacing: 0; }
-::selection { background: var(--primary-soft); color: var(--foreground); }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+body {
+  letter-spacing: 0;
+}
+[class*="tracking-tight"] {
+  letter-spacing: 0;
+}
+::selection {
+  background: var(--primary-soft);
+  color: var(--foreground);
+}
 
 html::after {
   position: fixed;
@@ -440,15 +418,33 @@ html.theme-switching::after {
   opacity: 0;
 }
 
-.landing-page .text-xs { font-size: calc(0.75rem + 3px); }
-.landing-page .text-sm { font-size: calc(0.875rem + 3px); }
-.landing-page .text-base { font-size: calc(1rem + 3px); }
-.landing-page .text-lg { font-size: calc(1.125rem + 3px); }
-.landing-page .text-xl { font-size: calc(1.25rem + 3px); }
-.landing-page .text-2xl { font-size: calc(1.5rem + 3px); }
-.landing-page .text-3xl { font-size: calc(1.875rem + 3px); }
-.landing-page .text-4xl { font-size: calc(2.25rem + 3px); }
-.landing-page .text-6xl { font-size: calc(3.75rem + 3px); }
+.landing-page .text-xs {
+  font-size: calc(0.75rem + 3px);
+}
+.landing-page .text-sm {
+  font-size: calc(0.875rem + 3px);
+}
+.landing-page .text-base {
+  font-size: calc(1rem + 3px);
+}
+.landing-page .text-lg {
+  font-size: calc(1.125rem + 3px);
+}
+.landing-page .text-xl {
+  font-size: calc(1.25rem + 3px);
+}
+.landing-page .text-2xl {
+  font-size: calc(1.5rem + 3px);
+}
+.landing-page .text-3xl {
+  font-size: calc(1.875rem + 3px);
+}
+.landing-page .text-4xl {
+  font-size: calc(2.25rem + 3px);
+}
+.landing-page .text-6xl {
+  font-size: calc(3.75rem + 3px);
+}
 
 .landing-page h1.hero-wordmark {
   font-size: clamp(3.75rem, 8vw, 6rem);
@@ -580,7 +576,9 @@ html.theme-switching::after {
   z-index: 1;
   scale: 1.04;
   outline-color: var(--primary);
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--primary) 55%, transparent), var(--shadow-lift);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--primary) 55%, transparent),
+    var(--shadow-lift);
 }
 
 .dark .feature-card:hover,
@@ -596,6 +594,11 @@ html.theme-switching::after {
     box-shadow 0.35s ease;
 }
 
+.preview-art {
+  filter: blur(4px);
+  transform: scale(1.04);
+}
+
 .product-preview-card:hover {
   box-shadow:
     0 0 0 1px color-mix(in srgb, var(--primary) 35%, transparent),
@@ -609,8 +612,12 @@ html.theme-switching::after {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

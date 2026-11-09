@@ -17,10 +17,7 @@ export function PageHeader({
     <motion.header
       initial={{ opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
-      className={cn(
-        "flex flex-wrap items-start justify-between gap-4 sm:items-center",
-        className,
-      )}
+      className={cn("flex flex-wrap items-start justify-between gap-4 sm:items-center", className)}
     >
       <div className="min-w-0">
         <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">{title}</h1>
@@ -28,7 +25,9 @@ export function PageHeader({
           <p className="mt-1 max-w-2xl text-sm text-muted-foreground">{description}</p>
         )}
       </div>
-      {actions && <div className="flex shrink-0 flex-wrap gap-2">{actions}</div>}
+      {actions && (
+        <div className="grid w-full grid-cols-2 gap-2 sm:flex sm:w-auto sm:shrink-0">{actions}</div>
+      )}
     </motion.header>
   );
 }

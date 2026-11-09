@@ -52,8 +52,18 @@ function Budget() {
       />
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="Planned budget" value={total} prefix="₹" icon={<Wallet className="h-4.5 w-4.5" />} />
-        <StatCard label="Spent so far" value={spent} prefix="₹" icon={<TrendingDown className="h-4.5 w-4.5" />} />
+        <StatCard
+          label="Planned budget"
+          value={total}
+          prefix="₹"
+          icon={<Wallet className="h-4.5 w-4.5" />}
+        />
+        <StatCard
+          label="Spent so far"
+          value={spent}
+          prefix="₹"
+          icon={<TrendingDown className="h-4.5 w-4.5" />}
+        />
         <StatCard
           label="Projected savings"
           value={4300}
@@ -88,7 +98,9 @@ function Budget() {
                     background: "var(--color-card)",
                     border: "1px solid var(--color-border)",
                     borderRadius: 12,
+                    color: "var(--color-foreground)",
                   }}
+                  itemStyle={{ color: "var(--color-foreground)" }}
                 />
                 <Legend verticalAlign="bottom" iconType="circle" />
               </PieChart>
@@ -101,7 +113,11 @@ function Budget() {
           <div className="mt-2 h-72">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={spendByDay} margin={{ left: -18, right: 6, top: 12 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" vertical={false} />
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  stroke="var(--color-border)"
+                  vertical={false}
+                />
                 <XAxis dataKey="day" tickLine={false} axisLine={false} fontSize={12} />
                 <YAxis tickLine={false} axisLine={false} fontSize={12} />
                 <Tooltip
@@ -110,7 +126,9 @@ function Budget() {
                     background: "var(--color-card)",
                     border: "1px solid var(--color-border)",
                     borderRadius: 12,
+                    color: "var(--color-foreground)",
                   }}
+                  itemStyle={{ color: "var(--color-foreground)" }}
                 />
                 <Legend iconType="circle" />
                 <Bar dataKey="planned" fill="var(--color-chart-1)" radius={[6, 6, 0, 0]} />

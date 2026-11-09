@@ -21,7 +21,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { Badge } from "@/components/ui/badge";
 import { useTheme } from "@/hooks/use-theme";
 import { cn } from "@/lib/utils";
 
@@ -38,7 +37,13 @@ const nav = [
   { to: "/app/settings", label: "Settings", icon: Settings },
 ] as const;
 
-export function Logo({ compact = false, textClassName }: { compact?: boolean; textClassName?: string }) {
+export function Logo({
+  compact = false,
+  textClassName,
+}: {
+  compact?: boolean;
+  textClassName?: string;
+}) {
   return (
     <Link to="/" className="flex min-w-0 items-center gap-2.5 overflow-visible">
       <img
@@ -129,8 +134,18 @@ export function AppShell({ children }: { children: ReactNode }) {
               <Bell className="h-4.5 w-4.5" />
               <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-amber" />
             </Button>
-            <Button variant="ghost" size="icon" aria-label="Toggle theme" title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"} onClick={toggle}>
-              {theme === "dark" ? <Sun className="h-4.5 w-4.5" /> : <Moon className="h-4.5 w-4.5" />}
+            <Button
+              variant="ghost"
+              size="icon"
+              aria-label="Toggle theme"
+              title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+              onClick={toggle}
+            >
+              {theme === "dark" ? (
+                <Sun className="h-4.5 w-4.5" />
+              ) : (
+                <Moon className="h-4.5 w-4.5" />
+              )}
             </Button>
             <Button
               asChild
@@ -155,16 +170,6 @@ export function AppShell({ children }: { children: ReactNode }) {
       <div className="flex">
         <aside className="sticky top-16 hidden h-[calc(100dvh-4rem)] w-64 shrink-0 border-r border-sidebar-border bg-sidebar px-3 py-5 lg:block">
           <NavList />
-          <div className="mt-6 space-y-5">
-            <div className="space-y-2 rounded-lg border border-sidebar-border bg-muted/40 p-4">
-              <Badge className="bg-amber text-amber-foreground">Pro trial</Badge>
-              <p className="text-sm font-medium">12 AI itineraries left</p>
-              <p className="text-xs text-muted-foreground">Renews on 1 Sep 2026</p>
-              <Button size="sm" className="w-full">
-                Upgrade
-              </Button>
-            </div>
-          </div>
         </aside>
 
         <main className="min-w-0 flex-1 px-4 py-7 lg:px-8 lg:py-8">{children}</main>

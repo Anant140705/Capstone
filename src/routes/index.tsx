@@ -17,7 +17,9 @@ import {
 } from "lucide-react";
 import heroImage from "@/assets/udaipur-hero.jpg";
 import { useTheme } from "@/hooks/use-theme";
-import { IndiaMap } from "@/components/travel/IndiaMap";
+import { InteractiveMap } from "@/components/travel/InteractiveMap";
+import { destinations } from "@/data/destinations";
+import { cn } from "@/lib/utils";
 import { Logo } from "@/components/layout/AppShell";
 import { Button } from "@/components/ui/button";
 import {
@@ -83,9 +85,21 @@ const features = [
 ];
 
 const steps = [
-  { n: "01", t: "Tell us the shape of the trip", d: "Cities, days, budget, travellers, interests." },
-  { n: "02", t: "AI drafts and optimises", d: "Destinations, routes, hotels and costs in under a minute." },
-  { n: "03", t: "Refine by conversation", d: "Adjust anything in plain language, then export or share." },
+  {
+    n: "01",
+    t: "Tell us the shape of the trip",
+    d: "Cities, days, budget, travellers, interests.",
+  },
+  {
+    n: "02",
+    t: "AI drafts and optimises",
+    d: "Destinations, routes, hotels and costs in under a minute.",
+  },
+  {
+    n: "03",
+    t: "Refine by conversation",
+    d: "Adjust anything in plain language, then export or share.",
+  },
 ];
 
 const testimonials = [
@@ -173,8 +187,7 @@ function Landing() {
     const header = document.querySelector("header");
     const headerHeight = header?.getBoundingClientRect().height ?? 0;
     const startPosition = window.scrollY;
-    const targetPosition =
-      window.scrollY + target.getBoundingClientRect().top - headerHeight - 16;
+    const targetPosition = window.scrollY + target.getBoundingClientRect().top - headerHeight - 16;
     const distance = targetPosition - startPosition;
     const duration = 900;
     const startTime = performance.now();
@@ -195,23 +208,58 @@ function Landing() {
 
   return (
     <div className="landing-page min-h-dvh bg-background">
-      <header
-        className="landing-navbar fixed inset-x-0 top-0 z-40 border-b border-border/70 bg-background/80 backdrop-blur-xl"
-      >
+      <header className="landing-navbar fixed inset-x-0 top-0 z-40 border-b border-border/70 bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex h-[4.5rem] w-full items-center justify-between gap-5 px-5 sm:px-8 lg:px-12 xl:px-16">
           <Logo />
           <nav aria-label="Primary" className="hidden items-center gap-7 text-sm md:flex">
-            <a href="#features" onClick={scrollToSection} className="text-muted-foreground hover:text-foreground">Features</a>
-            <a href="#how" onClick={scrollToSection} className="text-muted-foreground hover:text-foreground">How it works</a>
-            <a href="#preview" onClick={scrollToSection} className="text-muted-foreground hover:text-foreground">Product</a>
-            <a href="#faq" onClick={scrollToSection} className="text-muted-foreground hover:text-foreground">FAQ</a>
+            <a
+              href="#features"
+              onClick={scrollToSection}
+              className="text-muted-foreground hover:text-foreground"
+            >
+              Features
+            </a>
+            <a
+              href="#how"
+              onClick={scrollToSection}
+              className="text-muted-foreground hover:text-foreground"
+            >
+              How it works
+            </a>
+            <a
+              href="#preview"
+              onClick={scrollToSection}
+              className="text-muted-foreground hover:text-foreground"
+            >
+              Product
+            </a>
+            <a
+              href="#faq"
+              onClick={scrollToSection}
+              className="text-muted-foreground hover:text-foreground"
+            >
+              FAQ
+            </a>
           </nav>
           <div className="landing-nav-actions flex shrink-0 items-center gap-1.5">
-            <Button className="h-9 w-9" variant="ghost" size="icon" onClick={toggle} aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"} title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}>
+            <Button
+              className="h-9 w-9"
+              variant="ghost"
+              size="icon"
+              onClick={toggle}
+              aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+              title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            >
               {theme === "dark" ? <Sun /> : <Moon />}
             </Button>
-            <Button asChild variant="ghost" size="sm" className="h-9"><Link to="/login">Log in</Link></Button>
-            <Button asChild size="sm" className="h-9"><Link to="/signup">Get started <ArrowUpRight /></Link></Button>
+            <Button asChild variant="ghost" size="sm" className="h-9">
+              <Link to="/login">Log in</Link>
+            </Button>
+            <Button asChild size="sm" className="h-9">
+              <Link to="/signup">
+                Get started <ArrowUpRight />
+              </Link>
+            </Button>
           </div>
         </div>
       </header>
@@ -228,8 +276,16 @@ function Landing() {
           />
           <div className="absolute inset-0 -z-10 bg-photo-overlay/50" />
           <div className="relative mx-auto h-full w-full px-5 sm:px-8 lg:px-12 xl:px-16">
-            <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="absolute left-1/2 top-[14%] flex w-[calc(100%-2.5rem)] max-w-2xl -translate-x-1/2 flex-col items-center space-y-4 text-center sm:top-[16%] sm:w-[calc(100%-4rem)]">
-              <p className="flex items-center gap-2 text-sm font-medium text-photo-muted"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> A little less planning. A lot more India.</p>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="absolute left-1/2 top-[14%] flex w-[calc(100%-2.5rem)] max-w-2xl -translate-x-1/2 flex-col items-center space-y-4 text-center sm:top-[16%] sm:w-[calc(100%-4rem)]"
+            >
+              <p className="flex items-center gap-2 text-sm font-medium text-photo-muted">
+                <span className="h-1.5 w-1.5 rounded-full bg-teal" /> A little less planning. A lot
+                more India.
+              </p>
               <div className="space-y-4">
                 <h1 className="hero-wordmark font-mugle font-bold leading-tight">GoWander</h1>
               </div>
@@ -238,25 +294,50 @@ function Landing() {
               Your next great Indian journey.
             </p>
             <div className="hero-actions absolute bottom-[18%] left-1/2 flex -translate-x-1/2 flex-wrap justify-center gap-4">
-              <Button asChild size="lg" className="h-12"><Link to="/app/planner">Plan my trip <ArrowRight /></Link></Button>
-              <Button asChild variant="outline" size="lg" className="h-12 border-photo-foreground/40 bg-photo-foreground/10 text-photo-foreground backdrop-blur-sm hover:bg-photo-foreground/20 hover:text-photo-foreground"><Link to="/app/explore">Explore India <ArrowUpRight /></Link></Button>
+              <Button asChild size="lg" className="h-12">
+                <Link to="/app/planner">
+                  Plan my trip <ArrowRight />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="h-12 border-photo-foreground/40 bg-photo-foreground/10 text-photo-foreground backdrop-blur-sm hover:bg-photo-foreground/20 hover:text-photo-foreground"
+              >
+                <Link to="/app/explore">
+                  Explore India <ArrowUpRight />
+                </Link>
+              </Button>
             </div>
             <div className="hero-meta absolute bottom-[7%] left-5 right-5 flex flex-wrap items-end justify-between gap-6 border-t border-photo-foreground/25 pt-6 sm:bottom-[8%] sm:left-8 sm:right-8 lg:left-12 lg:right-12 xl:left-16 xl:right-16">
               <div className="flex flex-wrap gap-x-7 gap-y-3 text-xs text-photo-muted sm:text-sm">
-                <span className="flex items-center gap-2"><RouteIcon className="h-4 w-4" /> Your route</span>
-                <span className="flex items-center gap-2"><Wallet className="h-4 w-4" /> Your budget</span>
-                <span className="flex items-center gap-2"><Sparkles className="h-4 w-4" /> Your kind of trip</span>
+                <span className="flex items-center gap-2">
+                  <RouteIcon className="h-4 w-4" /> Your route
+                </span>
+                <span className="flex items-center gap-2">
+                  <Wallet className="h-4 w-4" /> Your budget
+                </span>
+                <span className="flex items-center gap-2">
+                  <Sparkles className="h-4 w-4" /> Your kind of trip
+                </span>
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <MapPin className="h-4 w-4" />
-                <span>{theme === "dark" ? "Vestrahorn mountain, Iceland" : "Udaipur, Rajasthan"}</span>
+                <span>
+                  {theme === "dark" ? "Vestrahorn mountain, Iceland" : "Udaipur, Rajasthan"}
+                </span>
               </div>
             </div>
           </div>
         </section>
 
         {/* Features */}
-        <motion.section id="features" {...sectionReveal} className="mx-auto w-full px-5 py-20 sm:px-8 lg:px-12 xl:px-16">
+        <motion.section
+          id="features"
+          {...sectionReveal}
+          className="mx-auto w-full px-5 py-20 sm:px-8 lg:px-12 xl:px-16"
+        >
           <div className="max-w-2xl">
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
               Every detail. One beautiful journey.
@@ -299,7 +380,10 @@ function Landing() {
                   transition={{ duration: 0.8, delay: i * 0.16 }}
                   className="how-step space-y-2"
                 >
-                  <div className="how-step-number flex items-center gap-4" aria-label={`Step ${s.n}`}>
+                  <div
+                    className="how-step-number flex items-center gap-4"
+                    aria-label={`Step ${s.n}`}
+                  >
                     <span className="h-px flex-1 bg-border" />
                     <span className="min-w-10 text-center text-sm font-semibold text-primary">
                       {s.n}
@@ -315,7 +399,11 @@ function Landing() {
         </motion.section>
 
         {/* Screenshots */}
-        <motion.section id="preview" {...sectionReveal} className="mx-auto w-full px-5 py-20 sm:px-8 lg:px-12 xl:px-16">
+        <motion.section
+          id="preview"
+          {...sectionReveal}
+          className="mx-auto w-full px-5 py-20 sm:px-8 lg:px-12 xl:px-16"
+        >
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Inside the product</h2>
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {[
@@ -331,9 +419,70 @@ function Landing() {
                 transition={{ duration: 0.8, delay: i * 0.14 }}
                 className="product-preview-card surface hover-lift overflow-hidden"
               >
-                <div className="aurora h-44 border-b border-border p-4">
-                  <div className="h-full w-full">
-                    <IndiaMap showRoutes={i !== 2} />
+                <div className="aurora flex h-44 items-center justify-center border-b border-border p-4">
+                  <div
+                    className={cn(
+                      "h-full w-full overflow-hidden rounded-xl",
+                      s.title !== "Explore" && "preview-art",
+                    )}
+                  >
+                    {s.title === "Explore" ? (
+                      <InteractiveMap places={destinations} height="100%" showPopups />
+                    ) : s.title === "Itinerary" ? (
+                      <div className="surface-static h-full space-y-3 rounded-xl p-4">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <p className="text-xs font-semibold text-primary">
+                              ROYAL RAJASTHAN LOOP
+                            </p>
+                            <p className="text-sm font-semibold">4 days · 3 stops</p>
+                          </div>
+                          <span className="rounded-full bg-primary-soft px-2 py-1 text-[10px] font-medium text-primary">
+                            Draft
+                          </span>
+                        </div>
+                        <div className="space-y-2.5">
+                          {[
+                            ["Day 1", "Jaipur", "Amber Fort · City Palace"],
+                            ["Day 2", "Pushkar", "Lake walk · Brahma Temple"],
+                            ["Day 3", "Udaipur", "Boat ride · City Palace"],
+                          ].map(([day, city, detail]) => (
+                            <div key={day} className="flex items-center gap-3 text-xs">
+                              <span className="w-9 font-semibold text-primary">{day}</span>
+                              <span className="h-2 w-2 rounded-full bg-primary" />
+                              <div className="min-w-0">
+                                <p className="truncate font-medium">{city}</p>
+                                <p className="truncate text-muted-foreground">{detail}</p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="surface-static h-full rounded-xl p-4">
+                        <div className="flex items-start justify-between">
+                          <div>
+                            <p className="text-xs font-semibold text-primary">TRIP BUDGET</p>
+                            <p className="mt-1 text-xl font-semibold">₹42,800</p>
+                          </div>
+                          <Wallet className="h-5 w-5 text-primary" />
+                        </div>
+                        <div className="mt-3 flex h-16 items-end gap-2">
+                          {[42, 58, 35, 72, 50, 84, 64].map((value, index) => (
+                            <span
+                              key={index}
+                              className="flex-1 rounded-t bg-primary/80"
+                              style={{ height: `${value}%` }}
+                            />
+                          ))}
+                        </div>
+                        <div className="mt-2 grid grid-cols-3 gap-2 text-[10px] text-muted-foreground">
+                          <span>Stay ₹18k</span>
+                          <span>Travel ₹14k</span>
+                          <span>Food ₹6k</span>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="flex items-center justify-between gap-3 p-5">
@@ -383,7 +532,11 @@ function Landing() {
         </motion.section>
 
         {/* FAQ */}
-        <motion.section id="faq" {...sectionReveal} className="mx-auto w-full px-5 py-20 sm:px-8 lg:px-12 xl:px-16">
+        <motion.section
+          id="faq"
+          {...sectionReveal}
+          className="mx-auto w-full px-5 py-20 sm:px-8 lg:px-12 xl:px-16"
+        >
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
             Frequently asked questions
           </h2>

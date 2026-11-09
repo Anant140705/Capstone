@@ -5,7 +5,7 @@ import { Search, Sparkles, Star, X, Plus } from "lucide-react";
 import { toast } from "sonner";
 import { PageHeader } from "@/components/travel/PageHeader";
 import { DestinationCard } from "@/components/travel/DestinationCard";
-import { IndiaMap } from "@/components/travel/IndiaMap";
+import { InteractiveMap } from "@/components/travel/InteractiveMap";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -41,6 +41,10 @@ export const Route = createFileRoute("/app/explore")({
 });
 
 function Explore() {
+  const exploreDestinations = useMemo(
+    () => destinations.filter((destination) => destination.id !== "hampi"),
+    [],
+  );
   const [query, setQuery] = useState("");
   const [state, setState] = useState("all");
   const [category, setCategory] = useState("all");
@@ -51,7 +55,7 @@ function Explore() {
 
   const results = useMemo(
     () =>
-      destinations.filter((d) => {
+      exploreDestinations.filter((d) => {
         const q = query.trim().toLowerCase();
         const days = parseInt(d.duration, 10) || 1;
         return (
@@ -65,7 +69,7 @@ function Explore() {
             (duration === "long" && days > 5))
         );
       }),
-    [query, state, category, budget, duration],
+    [exploreDestinations, query, state, category, budget, duration],
   );
 
   const onAdd = (d: Destination) => {
@@ -83,7 +87,13 @@ function Explore() {
       <div className="grid gap-5 xl:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)]">
         <div className="relative h-[420px] xl:sticky xl:top-24 xl:h-[calc(100dvh-140px)]">
           <div className="surface h-full overflow-hidden p-2">
-            <IndiaMap active={active?.id ?? null} onSelect={setActive} />
+            <InteractiveMap
+              places={results}
+              showSearch
+              showFilters
+              searchQuery={query}
+              onMarkerClick={(place) => setActive(place as Destination)}
+            />
           </div>
 
           <AnimatePresence>

@@ -71,7 +71,12 @@ function Dashboard() {
       />
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="Upcoming trips" value={2} icon={<Plane className="h-4.5 w-4.5" />} hint="Next: 12 Nov" />
+        <StatCard
+          label="Upcoming trips"
+          value={2}
+          icon={<Plane className="h-4.5 w-4.5" />}
+          hint="Next: 12 Nov"
+        />
         <StatCard
           label="Planned budget"
           value={totalBudget}
@@ -79,8 +84,18 @@ function Dashboard() {
           icon={<Wallet className="h-4.5 w-4.5" />}
           hint="Across all active trips"
         />
-        <StatCard label="Destinations saved" value={18} icon={<MapPinned className="h-4.5 w-4.5" />} hint="6 hidden gems" />
-        <StatCard label="AI itineraries" value={24} icon={<Sparkles className="h-4.5 w-4.5" />} hint="12 left this month" />
+        <StatCard
+          label="Destinations saved"
+          value={18}
+          icon={<MapPinned className="h-4.5 w-4.5" />}
+          hint="6 hidden gems"
+        />
+        <StatCard
+          label="AI itineraries"
+          value={24}
+          icon={<Sparkles className="h-4.5 w-4.5" />}
+          hint="12 left this month"
+        />
       </div>
 
       <div className="grid gap-4 lg:grid-cols-3">
@@ -102,7 +117,11 @@ function Dashboard() {
                     <stop offset="100%" stopColor="var(--color-chart-1)" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" vertical={false} />
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  stroke="var(--color-border)"
+                  vertical={false}
+                />
                 <XAxis dataKey="month" tickLine={false} axisLine={false} fontSize={12} />
                 <YAxis tickLine={false} axisLine={false} fontSize={12} />
                 <Tooltip
@@ -110,7 +129,9 @@ function Dashboard() {
                     background: "var(--color-card)",
                     border: "1px solid var(--color-border)",
                     borderRadius: 12,
+                    color: "var(--color-foreground)",
                   }}
+                  itemStyle={{ color: "var(--color-foreground)" }}
                 />
                 <Area
                   type="monotone"

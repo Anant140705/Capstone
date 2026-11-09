@@ -3,7 +3,8 @@ import { useMemo, useState } from "react";
 import { toast } from "sonner";
 import { PageHeader, EmptyState } from "@/components/travel/PageHeader";
 import { HotelCard } from "@/components/travel/HotelCard";
-import { IndiaMap } from "@/components/travel/IndiaMap";
+import { InteractiveMap } from "@/components/travel/InteractiveMap";
+import { destinations } from "@/data/destinations";
 import { Button } from "@/components/ui/button";
 import { BedDouble } from "lucide-react";
 import { hotels } from "@/data/hotels";
@@ -89,7 +90,13 @@ function Hotels() {
 
         <aside className="surface-static overflow-hidden xl:sticky xl:top-24 xl:self-start">
           <div className="h-64">
-            <IndiaMap showRoutes className="rounded-none" />
+            <InteractiveMap
+              places={destinations}
+              showPopups
+              showRouting={false}
+              height="100%"
+              className="rounded-none"
+            />
           </div>
           <div className="p-4">
             <p className="text-sm font-medium">Map preview</p>

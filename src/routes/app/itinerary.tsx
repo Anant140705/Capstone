@@ -14,7 +14,8 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { PageHeader } from "@/components/travel/PageHeader";
-import { IndiaMap } from "@/components/travel/IndiaMap";
+import { InteractiveMap } from "@/components/travel/InteractiveMap";
+import { destinations } from "@/data/destinations";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
@@ -107,7 +108,10 @@ function Itinerary() {
 
                 <div className="divide-y divide-border">
                   {day.slots.map((slot) => (
-                    <div key={slot.time} className="grid gap-1 p-4 sm:grid-cols-[110px_minmax(0,1fr)_auto]">
+                    <div
+                      key={slot.time}
+                      className="grid gap-1 p-4 sm:grid-cols-[110px_minmax(0,1fr)_auto]"
+                    >
                       <span className="text-xs font-semibold uppercase tracking-wide text-primary">
                         {slot.time}
                       </span>
@@ -139,7 +143,17 @@ function Itinerary() {
         <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
           <div className="surface overflow-hidden">
             <div className="h-48">
-              <IndiaMap showRoutes className="rounded-none" />
+              <InteractiveMap
+                places={destinations.filter((destination) =>
+                  ["jaipur", "udaipur"].includes(destination.id),
+                )}
+                selectedPlaces={destinations.filter((destination) =>
+                  ["jaipur", "udaipur"].includes(destination.id),
+                )}
+                showRouting
+                className="rounded-none"
+                height="100%"
+              />
             </div>
             <div className="p-4">
               <p className="text-sm font-medium">Route preview</p>
@@ -160,10 +174,7 @@ function Itinerary() {
                     <span className="text-muted-foreground">{b.name}</span>
                     <span>₹{b.value.toLocaleString("en-IN")}</span>
                   </div>
-                  <Progress
-                    value={(b.value / budgetBreakdown[0]!.value) * 100}
-                    className="h-1.5"
-                  />
+                  <Progress value={(b.value / budgetBreakdown[0]!.value) * 100} className="h-1.5" />
                 </div>
               ))}
             </div>

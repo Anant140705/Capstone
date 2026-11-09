@@ -10,6 +10,7 @@ export type Destination = {
   budgetBand: "Budget" | "Moderate" | "Premium";
   description: string;
   image: string;
+  coordinates: { lat: number; lng: number };
   /** normalized 0-100 coordinates on the stylised India map */
   x: number;
   y: number;
@@ -29,6 +30,7 @@ export const destinations: Destination[] = [
     budgetBand: "Moderate",
     description:
       "The Pink City pairs Amber Fort ramparts with bazaars, stepwells and rooftop dining under the Aravallis.",
+    coordinates: { lat: 26.9124, lng: 75.7873 },
     image:
       "https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=900&q=70",
     x: 33,
@@ -46,6 +48,7 @@ export const destinations: Destination[] = [
     budgetBand: "Premium",
     description:
       "Lake palaces, marble ghats and slow sunset boat rides make Udaipur India's most romantic city break.",
+    coordinates: { lat: 24.5854, lng: 73.7125 },
     image:
       "https://images.unsplash.com/photo-1609920658906-8223bd289001?auto=format&fit=crop&w=900&q=70",
     x: 28,
@@ -63,6 +66,7 @@ export const destinations: Destination[] = [
     budgetBand: "Moderate",
     description:
       "Portuguese quarters, cliff cafés and quiet south-coast sands — good for both nightlife and slow mornings.",
+    coordinates: { lat: 15.2993, lng: 74.124 },
     image:
       "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=900&q=70",
     x: 27,
@@ -80,6 +84,7 @@ export const destinations: Destination[] = [
     budgetBand: "Premium",
     description:
       "High-altitude desert, Pangong blue and monastery ridgelines. Plan two acclimatisation days before driving.",
+    coordinates: { lat: 34.1526, lng: 77.5771 },
     image:
       "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=900&q=70",
     x: 34,
@@ -97,6 +102,7 @@ export const destinations: Destination[] = [
     budgetBand: "Budget",
     description:
       "Dawn boat rides along the ghats, Ganga aarti at Dashashwamedh and the oldest lanes in the country.",
+    coordinates: { lat: 25.3176, lng: 82.9739 },
     image:
       "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=900&q=70",
     x: 55,
@@ -114,6 +120,7 @@ export const destinations: Destination[] = [
     budgetBand: "Budget",
     description:
       "Tea terraces in the Western Ghats with cloud-level viewpoints and Eravikulam's Nilgiri tahr trails.",
+    coordinates: { lat: 10.0889, lng: 77.0595 },
     image:
       "https://images.unsplash.com/photo-1580889240912-c39ecefd3d95?auto=format&fit=crop&w=900&q=70",
     x: 34,
@@ -131,6 +138,7 @@ export const destinations: Destination[] = [
     budgetBand: "Budget",
     description:
       "Boulder fields and Vijayanagara ruins — cycle between temples at sunrise, climb Matanga at dusk.",
+    coordinates: { lat: 15.335, lng: 76.46 },
     image:
       "https://images.unsplash.com/photo-1600100397608-f010248c1e60?auto=format&fit=crop&w=900&q=70",
     x: 35,
@@ -149,6 +157,7 @@ export const destinations: Destination[] = [
     budgetBand: "Moderate",
     description:
       "Living root bridges, Nohkalikai falls and the clearest river water in the country at Dawki.",
+    coordinates: { lat: 25.5788, lng: 91.8933 },
     image:
       "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=900&q=70",
     x: 79,
@@ -167,6 +176,7 @@ export const destinations: Destination[] = [
     budgetBand: "Moderate",
     description:
       "One of the best tiger-sighting probabilities in India, wrapped around a tenth-century fort.",
+    coordinates: { lat: 26.0173, lng: 76.5026 },
     image:
       "https://images.unsplash.com/photo-1549366021-9f761d450615?auto=format&fit=crop&w=900&q=70",
     x: 36,
@@ -184,6 +194,7 @@ export const destinations: Destination[] = [
     budgetBand: "Premium",
     description:
       "Art-deco waterfronts, Kala Ghoda galleries, Irani cafés and the ferry out to Elephanta caves.",
+    coordinates: { lat: 19.076, lng: 72.8777 },
     image:
       "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=900&q=70",
     x: 28,
@@ -201,6 +212,7 @@ export const destinations: Destination[] = [
     budgetBand: "Premium",
     description:
       "Radhanagar's white sand and shallow reefs — the best beginner scuba water in the country.",
+    coordinates: { lat: 12.0068, lng: 92.9876 },
     image:
       "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=900&q=70",
     x: 82,
@@ -218,6 +230,7 @@ export const destinations: Destination[] = [
     budgetBand: "Moderate",
     description:
       "Cold desert villages, Key monastery and Chandratal lake — a slow circuit best done by shared cab.",
+    coordinates: { lat: 32.2468, lng: 78.0349 },
     image:
       "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=900&q=70",
     x: 38,
