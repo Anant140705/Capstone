@@ -12,7 +12,6 @@ import {
   Settings,
   Menu,
   Search,
-  Bell,
   Moon,
   Sun,
 } from "lucide-react";
@@ -130,10 +129,6 @@ export function AppShell({ children }: { children: ReactNode }) {
           </div>
 
           <div className="flex shrink-0 items-center gap-1.5">
-            <Button variant="ghost" size="icon" aria-label="Notifications" className="relative">
-              <Bell className="h-4.5 w-4.5" />
-              <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-amber" />
-            </Button>
             <Button
               variant="ghost"
               size="icon"
